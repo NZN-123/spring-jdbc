@@ -18,7 +18,7 @@ import java.util.List;
 public class BankServiceImpl implements BankService {
     private final AccountRepository accountRepository;
 
-    //    @Transactional // 쓰기 트랜잭션
+    @Transactional // 쓰기 트랜잭션
     @Override
     public void makeAccount(AccountFormDTO dto) {
         System.out.println("BankServiceImpl.makeAccount");
@@ -28,6 +28,7 @@ public class BankServiceImpl implements BankService {
 //        throw new RuntimeException("DB에 생성한 다음 예외"); // 트랜잭션 롤백 확인용
     }
 
+    @Transactional // 쓰기 트랜잭션
     @Override
     public void changeAccount(AccountUpdateDTO dto) {
         System.out.println("BankServiceImpl.changeAccount");
@@ -43,6 +44,7 @@ public class BankServiceImpl implements BankService {
         return AccountViewDTO.fromEntity(accountRepository.findById(id));
     }
 
+    @Transactional // 쓰기 트랜잭션
     @Override
     public void deleteAccount(long id) {
         accountRepository.deleteById(id);
