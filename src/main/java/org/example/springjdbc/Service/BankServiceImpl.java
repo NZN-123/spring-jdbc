@@ -25,7 +25,7 @@ public class BankServiceImpl implements BankService {
         System.out.println("dto = " + dto);
         Account newAccount = Account.builder().name(dto.name()).build();
         accountRepository.save(newAccount);
-        throw new RuntimeException("DB에 생성한 다음 예외");
+//        throw new RuntimeException("DB에 생성한 다음 예외"); // 트랜잭션 롤백 확인용
     }
 
     @Override
